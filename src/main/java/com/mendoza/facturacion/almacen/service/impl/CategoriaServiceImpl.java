@@ -34,6 +34,18 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<Categoria> findAll() {
+        try {
+            return repository.findAll();
+        } catch (ValidateException | NoDataFoundException e) {
+            throw e;
+        } catch (GeneralException e) {
+            throw new GeneralException("Error del servidorr");
+        }
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<Categoria> findByNombre(String nombre, Pageable page) {
         try {
             List<Categoria> registros = repository.findByNombreContaining(nombre, page);

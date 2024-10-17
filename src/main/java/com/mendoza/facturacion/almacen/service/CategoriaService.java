@@ -11,4 +11,5 @@ public interface CategoriaService {
     public Categoria findById(int id);
     public Categoria save(Categoria categoria);
     public void delete(int id);
+    public List<Categoria> findAll();
 }

@@ -29,8 +29,7 @@ public class CategoriaController {
             @RequestParam(value = "limit", required = false, defaultValue = "5") int pageSize
     ) {
         Pageable page = PageRequest.of(pageNumber, pageSize);
-        List<CategoriaDto> categorias = converter.fromEntities(service.findAll(page));
-//        return ResponseEntity.ok(categorias);
+        List<CategoriaDto> categorias = converter.fromEntities(service.findAll());
         return new WrapperResponse(true, "success", categorias).createResponse(HttpStatus.OK);
     }
 
